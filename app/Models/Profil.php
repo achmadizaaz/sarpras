@@ -10,7 +10,7 @@ class Profil extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama', 'telepon', 'alamat'
+        'image', 'nama', 'telepon', 'alamat'
     ];
 
     public function user()

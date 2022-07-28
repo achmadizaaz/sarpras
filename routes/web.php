@@ -25,5 +25,7 @@ Route::get('/dashboard', function () {
 // Profil
 
 Route::get('dashboard/profil', [ProfilController::class, 'index'])->name('profil.index');
+Route::get('dashboard/profil/edit', [ProfilController::class, 'edit'])->name('profil.edit');
+Route::post('dashboard/profil/update', [ProfilController::class, 'update'])->name('profil.update');
 
 require __DIR__.'/auth.php';

@@ -16,6 +16,7 @@
                                                 
                           <table class="table">
                             <thead>
+                                <th>Image</th>
                                 <th>Nama</th>
                                 <th>Telepon</th>
                                 <th>Alamat</th>
@@ -23,24 +24,20 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td>
+                                        <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1" style="width: 30;height:30px">
+                                    </td>
                                     <td>{{$profil->nama}}</td>
                                     <td>{{$profil->telepon}}</td>
                                     <td> {{$profil->alamat}}</td>
                                     <td>
-                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <a href="{{ route('profil.edit') }}" class="btn btn-warning">Edit</a>
                                     </td>
                                 </tr>
                             </tbody>
                           </table>
                         </div>
                       </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-header">
-                          <h4>Ubah Sandi</h4>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
