@@ -13,14 +13,13 @@
                             <form action="{{ route('profil.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $profil->id }}">
+                                <input type="hidden" name="imageLama" value="{{ $profil->image }}">
                                 <div class="mb-3">
                                 <div class="input-group d-flex">
                                     <div class="me-3">
                                         @if ($profil->image)
-                                            ss
+                                        <img alt="image" src="{{ asset('storage/'.$profil->image) }}" class="border border-light rounded-circle pr-3" style="width: 80px;height:80px">
                                         @else
-                                        ss
-                                        <img src="{{ asset('images/profil/header%20lppm.png') }}" alt="">
                                             <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="border border-light rounded-circle pr-3" style="width: 80px;height:80px">
                                         @endif
                                        

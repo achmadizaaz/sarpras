@@ -29,21 +29,22 @@ class ProfilController extends Controller
 
     public function update(ProfilRequest $request)
     {
-        // dd($request->file('image'));
+        
 
         if($request->file('image')){
             $image = $request->file('image');
-            $imageName = $image->getClientOriginalName();
-            $path = $request->image->storeAs('images/profil', $imageName);
-
-            dd($path);
+            $imageName = date('YmdHi')."-".$image->getClientOriginalName();
+            $pathImage = $request->image->storeAs('images/profil', $imageName);
+        }else{
+            $pathImage = $request->imageLama;
         }
 
-        // Profil::where('id', $request->id)->update([
-        //     'nama' => $request->nama,
-        //     'telepon' => $request->telepon,
-        //     'alamat' => $request->alamat
-        // ]);
+        Profil::where('id', $request->id)->update([
+            'image' => $pathImage,
+            'nama' => $request->nama,
+            'telepon' => $request->telepon,
+            'alamat' => $request->alamat
+        ]);
 
         return back();
     }
