@@ -39,8 +39,12 @@
           <div class="dropdown">
             <a href="#" data-bs-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-              {{-- <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1"> --}}
-              <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->email }}
+              @if (Auth::user()->profil->image)
+               <img alt="image" src="{{ asset('storage/'. Auth::user()->profil->image) }}" class="rounded-circle mr-1 " style="width: 30px;height:30px">
+              @else
+              <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="border border-light rounded-circle pr-3" style="width: 30px;height:30px">
+              @endif
+              <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->profil->nama }}
               </div>
             </a>
             <ul class="dropdown-menu dropdown-menu-end mt-2">

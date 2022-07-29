@@ -18,7 +18,7 @@
                                 <div class="input-group d-flex">
                                     <div class="me-3">
                                         @if ($profil->image)
-                                        <img alt="image" src="{{ asset('storage/'.$profil->image) }}" class="border border-light rounded-circle pr-3" style="width: 80px;height:80px">
+                                        <img alt="image" src="{{ asset('storage/'.$profil->image) }}" class="border border-light rounded-circle pr-3 img-fluid" style="width: 80px;height:80px">
                                         @else
                                             <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="border border-light rounded-circle pr-3" style="width: 80px;height:80px">
                                         @endif
@@ -50,7 +50,8 @@
                                     <label for="alamat" class="form-label">Alamat</label>
                                     <textarea class="form-control" name="alamat" id="alamat" style="height: 100px">{{ old('alamat', $profil->alamat) }}</textarea>
                                 </div>
-                                <button class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <a class="btn btn-danger" href="{{ route('profil.index') }}">Kembali</a>
                             </form>
                         </div>
                       </div>

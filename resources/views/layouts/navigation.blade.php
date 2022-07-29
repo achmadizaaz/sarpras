@@ -8,7 +8,7 @@
       </div>
       <ul class="sidebar-menu">
         <li>
-          <a href="#" class="nav-link">
+          <a href="{{ route('dashboard') }}" class="nav-link">
             <i class="fas fa-fire"></i><span>Dashboard</span>
         </a>
         </li>
@@ -18,7 +18,7 @@
             <i class="fas fa-columns"></i> <span>Bangunan</span>
         </a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="#">Bangunan Utama</a></li>
+            <li><a class="nav-link" href="{{ route('bangunan.index') }}">Bangunan Utama</a></li>
             <li><a class="nav-link" href="#">Sub Bangunan</a></li>
             <li><a class="nav-link" href="#">Ruangan</a></li>
           </ul>

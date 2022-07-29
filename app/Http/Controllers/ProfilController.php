@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfilRequest;
 use App\Models\Profil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
@@ -32,6 +33,11 @@ class ProfilController extends Controller
         
 
         if($request->file('image')){
+            
+            if($request->imageLama){
+                Storage::delete($request->imageLama);
+            }
+
             $image = $request->file('image');
             $imageName = date('YmdHi')."-".$image->getClientOriginalName();
             $pathImage = $request->image->storeAs('images/profil', $imageName);
@@ -47,6 +53,10 @@ class ProfilController extends Controller
         ]);
 
         return back();
+    }
+
+    public function ubahSandi(Request $request){
+
     }
 
 }
