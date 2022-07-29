@@ -19,7 +19,7 @@
         </a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('bangunan.index') }}">Bangunan Utama</a></li>
-            <li><a class="nav-link" href="#">Sub Bangunan</a></li>
+            <li><a class="nav-link" href="{{ route('sub-bangunan.index') }}">Sub Bangunan</a></li>
             <li><a class="nav-link" href="#">Ruangan</a></li>
           </ul>
         </li>

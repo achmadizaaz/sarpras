@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\BangunanController;
 use App\Http\Controllers\ProfilController;
-use App\Models\Profil;
+use App\Http\Controllers\SubBangunanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::prefix('dashboard')->middleware(['auth'])->group(function(){
+
     // Profil Route
     Route::controller(ProfilController::class)->group(function(){
         Route::get('/profil', 'index')->name('profil.index');
@@ -34,6 +35,16 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
 
     Route::controller(BangunanController::class)->group(function(){
         Route::get('/bangunan', 'index')->name('bangunan.index');
+        Route::post('/bangunan/store', 'store')->name('bangunan.store');
+        Route::post('/bangunan/update', 'update')->name('bangunan.update');
+        Route::delete('/bangunan/{id}/remove', 'destroy')->name('bangunan.delete');
     });
+
+    Route::controller(SubBangunanController::class)->group(function(){
+        Route::get('/sub-bangunan', 'index')->name('sub-bangunan.index');
+    });
+
+
+// END PREFIX DASHBOARD
 });
 require __DIR__.'/auth.php';
