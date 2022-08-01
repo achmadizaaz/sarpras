@@ -30,8 +30,7 @@ class BangunanController extends Controller
     {
         
         $validated = $request->validate([
-            'kode' => 'required|unique:bangunans, kode,'.$request->id,
-            'kode' => ['required', Rule::unique('bangunans', 'kode')->ignore($request->id),
+            'kode' => ['required', Rule::unique('bangunans', 'kode')->ignore($request->id)
         ],
             'nama' => 'required'
         ]);

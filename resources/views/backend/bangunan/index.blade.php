@@ -22,7 +22,7 @@
                     <p class="text-primary">List Bangunan</p>
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table id="bahanTable" class="table table-striped" style="width:100%">
                         <thead>
                             <th>No</th>
                             <th>Kode</th>
@@ -140,7 +140,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Apakah Anda Yakin Ingin Menghapus, <strong>{{ $modal->nama }}</strong>?
+                <div class="mb-2">
+                    Apakah Anda Yakin Ingin Menghapus, <strong>{{ $modal->nama }}</strong>?
+                </div>
+                <div class="small">
+                    <b class="text-danger"> Warning</b>: Sub-Bangunan dan Ruangan yang terelasi dengan bangunan ini akan ikut terhapus.
+                </div>
             </div>
             
             <div class="modal-footer">
@@ -156,4 +161,5 @@
 </div>
 
   @endforeach
+
 @endsection

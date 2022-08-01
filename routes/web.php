@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BangunanController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SubBangunanController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,10 +41,23 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
         Route::delete('/bangunan/{id}/remove', 'destroy')->name('bangunan.delete');
     });
 
-    Route::controller(SubBangunanController::class)->group(function(){
+    Route::controller(SubBangunanController::class)->prefix('bangunan')->group(function(){
         Route::get('/sub-bangunan', 'index')->name('sub-bangunan.index');
+        Route::post('/sub-bangunan', 'store')->name('sub-bangunan.store');
+        Route::put('/sub-bangunan', 'update')->name('sub-bangunan.update');
+        Route::delete('/sub-bangunan/{id}/remove', 'destroy')->name('sub-bangunan.delete');
+    });
+    Route::controller(RuanganController::class)->prefix('bangunan/sub-bangunan')->group(function(){
+        Route::get('/ruangan', 'index')->name('ruangan.index');
+        Route::post('/ruangan', 'store')->name('ruangan.store');
+        Route::put('/ruangan', 'update')->name('ruangan.update');
+        Route::delete('/ruangan/{id}/remove', 'destroy')->name('ruangan.delete');
     });
 
+    Route::get('bangunan/sub-bangunan/{id}', function ($id) {
+        $sub_bangunan = App\Models\SubBangunan::where('bangunan_id',$id)->get();
+        return response()->json($sub_bangunan);
+    });
 
 // END PREFIX DASHBOARD
 });

@@ -31,6 +31,13 @@ class ProfilController extends Controller
     public function update(ProfilRequest $request)
     {
         
+        $validated = $request->validate([
+            'image' => 'mimes:jpg,jpeg,png|max:1024',
+            'nama' => 'required',
+            'telepon' => 'required',
+        ]);
+
+        // dd($validated);
 
         if($request->file('image')){
             

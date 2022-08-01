@@ -25,13 +25,18 @@
                                        
                                     </div>
                                     <div class="d-flex align-items-center">
-                                        <input type="file" name="image" class="form-control">
+                                        <input type="file" name="image" class="form-control @error('image')is-invalid @enderror">
                                     </div>
+                                    @error('image')
+                                    <div class="text-danger small">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                                 </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="nama" class="form-label">Nama</label>
-                                    <input type="text" class="form-control @error('nama') is-invalid @enderror " id="nama" name="nama" value="{{ old('nama', $profil->nama) }}" autocomplete="off">
+                                    <input type="text" class="form-control @error('nama') is-invalid @enderror " id="nama" name="nama" value="{{ old('nama', $profil->nama) }}" autocomplete="off" required>
                                     @error('nama')
                                     <div class="small text-danger ">{{ $message }}</div>
                                     @enderror
@@ -40,7 +45,7 @@
                                     <label for="telepon" class="form-label">Telepon</label>
                                     <div class="input-group ">
                                         <span class="input-group-text">+62</span>
-                                        <input type="text" class="form-control  @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon', $profil->telepon) }}" autocomplete="off">
+                                        <input type="text" class="form-control  @error('telepon') is-invalid @enderror" id="telepon" name="telepon" value="{{ old('telepon', $profil->telepon) }}" autocomplete="off" required>
                                     </div>
                                     @error('telepon')
                                         <div class="small text-danger ">{{ $message }}</div>
