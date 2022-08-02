@@ -35,7 +35,7 @@
                               
                           
                             <tr>
-                                <td>{{ 1 }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{ $sb->bangunan->nama }}</td>
                                 <td>{{ $sb->kode }}</td>
                                 <td>{{ $sb->nama }}</td>

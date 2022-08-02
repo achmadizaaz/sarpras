@@ -50,6 +50,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
     Route::controller(RuanganController::class)->prefix('bangunan/sub-bangunan')->group(function(){
         Route::get('/ruangan', 'index')->name('ruangan.index');
         Route::post('/ruangan', 'store')->name('ruangan.store');
+        Route::get('/ruangan/{id}/edit', 'edit')->name('ruangan.edit');
         Route::put('/ruangan', 'update')->name('ruangan.update');
         Route::delete('/ruangan/{id}/remove', 'destroy')->name('ruangan.delete');
     });
@@ -57,7 +58,7 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
     Route::get('bangunan/sub-bangunan/{id}', function ($id) {
         $sub_bangunan = App\Models\SubBangunan::where('bangunan_id',$id)->get();
         return response()->json($sub_bangunan);
-    });
+    })->name('getSubBangunan');
 
 // END PREFIX DASHBOARD
 });

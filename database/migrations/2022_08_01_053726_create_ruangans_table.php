@@ -15,7 +15,12 @@ class CreateRuangansTable extends Migration
     {
         Schema::create('ruangans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('sub_bangunan_id');
+            $table->string('kode')->unique();
+            $table->string('nama');
             $table->timestamps();
+
+            $table->foreign('sub_bangunan_id')->references('id')->on('sub_bangunans')->onDelete('cascade');
         });
     }
 

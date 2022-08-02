@@ -18,4 +18,9 @@ class SubBangunan extends Model
     {
         return $this->belongsTo(Bangunan::class);
     }
+
+    public function ruangan()
+    {
+        return $this->hasMany(Ruangan::class);
+    }
 }
