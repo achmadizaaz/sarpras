@@ -23,8 +23,8 @@
             <li><a class="nav-link" href="{{ route('ruangan.index') }}">Ruangan</a></li>
           </ul>
         </li>
-        <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>           
-        <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+        <li><a class="nav-link" href="{{ route('kategori.index') }}"><i class="far fa-square"></i> <span>Kategori</span></a></li>           
+        <li><a class="nav-link" href="#"><i class="fas fa-pencil-ruler"></i> <span>Barang</span></a></li>
       </ul>
     </aside>
   </div>

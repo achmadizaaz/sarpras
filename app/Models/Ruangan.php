@@ -13,6 +13,8 @@ class Ruangan extends Model
         'kode', 'nama','sub_bangunan_id'
     ];
 
+    protected $with = ['sub_bangunan'];
+    
     public function sub_bangunan()
     {
         return $this->belongsTo(SubBangunan::class);

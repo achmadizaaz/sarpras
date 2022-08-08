@@ -13,8 +13,10 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('ruangan.store') }}" method="post">
+                            <form action="{{ route('ruangan.update') }}" method="post">
                                 @csrf
+                                @method('put')
+                                <input type="hidden" name="id" value="{{ $ruangan->id }}">
                                 <div class="mb-3">
                                     <label for="kode" class="form-label">Kode</label>
                                     <input type="text" class="form-control" name="kode" value="{{ $ruangan->kode }}">
@@ -63,7 +65,6 @@
                    document.getElementById("sub_bangunan").disabled = false;
                     url = url.replace(':idBangunan', idBangunan);
                    if(idBangunan) {
-                  
                        $.ajax({
                            url: url,
                            type: "GET",

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BangunanController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SubBangunanController;
@@ -52,13 +53,19 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
         Route::post('/ruangan', 'store')->name('ruangan.store');
         Route::get('/ruangan/{id}/edit', 'edit')->name('ruangan.edit');
         Route::put('/ruangan', 'update')->name('ruangan.update');
-        Route::delete('/ruangan/{id}/remove', 'destroy')->name('ruangan.delete');
+        Route::post('/ruangan/remove', 'destroy')->name('ruangan.delete');
     });
 
     Route::get('bangunan/sub-bangunan/{id}', function ($id) {
         $sub_bangunan = App\Models\SubBangunan::where('bangunan_id',$id)->get();
         return response()->json($sub_bangunan);
     })->name('getSubBangunan');
+
+
+    Route::controller(KategoriController::class)->prefix('kategori')->group(function(){
+        Route::get('/', 'index')->name('kategori.index');
+    });
+
 
 // END PREFIX DASHBOARD
 });

@@ -13,8 +13,11 @@ class Bangunan extends Model
         'kode', 'nama'
     ];
 
+
+    // protected $with = ['subBangunan'];
     public function subBangunan()
     {
         return $this->hasMany(SubBangunan::class);
     }
+    
 }

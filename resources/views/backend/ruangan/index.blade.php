@@ -36,8 +36,8 @@
                             <td>{{ $rgn->sub_bangunan->bangunan->nama }}</td>
                             <td>{{ $rgn->sub_bangunan->nama }}</td>
                             <td>
-                                <a href="{{ route('ruangan.edit',$rgn->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="#" class="btn btn-danger">Hapus</a>
+                                <a href="{{ route('ruangan.edit',$rgn->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
+                                <button type="button" class="btn btn-danger remove" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$rgn->id}}" data-ruangan="{{ $rgn->nama }}" ><i class="bi bi-trash"></i></button>
                             </td>
                         </tr>
                         @endforeach
@@ -50,6 +50,30 @@
 
 
     </section>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus <span class="text-danger">Ruangan</span></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('ruangan.delete') }}" method="post">
+                @csrf
+                <input id="idHapus" name="id" type="hidden">
+            <div class="modal-body text-center">
+                <i class="bi bi-exclamation-circle text-danger" style="font-size:64px"></i>
+                <div class="text-center">Apakah anda yakin ingin menghapus ruangan, <span id="remove-ruangan-nama" class="fw-bold text-danger"></span>?</div>
+            </div>
+            <div class="modal-footer">
+               
+                <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+             </form>
+          </div>
+        </div>
+      </div>
 
     <!-- Modal Tambah -->
     <div class="modal fade" id="tambahModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,6 +119,16 @@
 
         
 <script>
+
+$(document).on('click', '.remove',function(){
+    let id = $(this).attr('data-id');
+    let nama = $(this).attr('data-ruangan');
+    $('#idHapus').val(id);
+    $('#remove-ruangan-nama').text(nama);
+
+});
+
+
 $(document).ready(function() {
     $('#selectBangunan').on('change', function() {
            let idBangunan = $(this).val();

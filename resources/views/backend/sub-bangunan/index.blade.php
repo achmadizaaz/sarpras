@@ -41,9 +41,9 @@
                                 <td>{{ $sb->nama }}</td>
                                 <td>{{  $sb->created_at }}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal-{{$sb->id}}">Edit</button>
+                                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editModal-{{$sb->id}}"><i class="bi bi-pencil-square"></i></button>
 
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$sb->id}}">Hapus</button>
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$sb->id}}"><i class="bi bi-trash"></i></button>
                                 </td>
                             </tr>
                             @endforeach
@@ -135,7 +135,7 @@
           </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Tambahkan</button>
+          <button type="submit" class="btn btn-primary">Update</button>
         </div>
       </form>
     </div>
@@ -162,12 +162,13 @@
             </div>
             
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                <form action="{{ route('sub-bangunan.delete', $sb->id) }}" method="post">
+              <form action="{{ route('sub-bangunan.delete', $sb->id) }}" method="post">
                 @method('delete')
                 @csrf
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                
             </div>
         </div>
     </div>

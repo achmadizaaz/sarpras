@@ -14,6 +14,8 @@ class SubBangunan extends Model
         'bangunan_id', 'kode', 'nama'
     ];
 
+    protected $with = ['bangunan'];
+
     public function bangunan()
     {
         return $this->belongsTo(Bangunan::class);
