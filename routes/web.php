@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
 Route::get('/dashboard', function () {
@@ -64,6 +64,8 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
 
     Route::controller(KategoriController::class)->prefix('kategori')->group(function(){
         Route::get('/', 'index')->name('kategori.index');
+        Route::get('/create', 'create')->name('kategori.create');
+        Route::post('/store', 'store')->name('kategori.store');
     });
 
 
