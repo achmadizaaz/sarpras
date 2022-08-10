@@ -66,6 +66,9 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
         Route::get('/', 'index')->name('kategori.index');
         Route::get('/create', 'create')->name('kategori.create');
         Route::post('/store', 'store')->name('kategori.store');
+        Route::get('/{id}/edit', 'edit')->name('kategori.edit');
+        Route::put('/update', 'update')->name('kategori.update');
+        Route::post('/remove', 'destroy')->name('kategori.delete');
     });
 
 
