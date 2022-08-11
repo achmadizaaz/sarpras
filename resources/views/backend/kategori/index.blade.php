@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Ruangan')
+@section('title', 'Kategori')
 
 @section('content')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"/>
     <section class="section">
         <div class="section-header d-flex justify-content-between">
             <h4>Kategori</h4>
-            <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Ruangan</a>
+            <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Kategori</a>
         </div>
         @if (session('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -19,13 +19,13 @@
 
             <div class="card">
                 <div class="card-body">
-                    <table class="table" id="example">
-                        <thead>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Keterangan</th>
-                            <th>Dibuat</th>
-                            <th>Aksi</th>
+                    <table class="table align-middle border " id="example">
+                        <thead class="bg-primary ">
+                            <th class="text-white">No</th>
+                            <th class="text-white">Nama</th>
+                            <th class="text-white">Keterangan</th>
+                            <th class="text-white">Dibuat</th>
+                            <th class="text-white">Aksi</th>
                         </thead>
                         <tbody>
                             @foreach ($kategori as $ktg)                            
@@ -33,7 +33,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $ktg->nama }}</td>
                                 <td>{{ $ktg->keterangan }}</td>
-                                <td>{{ $ktg->created_at->diffForHumans() }}</td>
+                                <td>{{ $ktg->created_at }}</td>
                                 <td>
                                     <a href="{{ route('kategori.edit', $ktg->id) }}" class="btn btn-warning"><i class="bi bi-pencil-square"></i></a>
                                     <button type="button" class="btn btn-danger remove" data-bs-toggle="modal" data-bs-target="#exampleModal" data-id="{{$ktg->id}}" data-nama="{{ $ktg->nama }}" ><i class="bi bi-trash"></i></button>

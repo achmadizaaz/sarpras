@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\BangunanController;
+use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\SubBangunanController;
+use App\Http\Controllers\SumberController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -69,6 +71,20 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
         Route::get('/{id}/edit', 'edit')->name('kategori.edit');
         Route::put('/update', 'update')->name('kategori.update');
         Route::post('/remove', 'destroy')->name('kategori.delete');
+    });
+
+    Route::controller(SumberController::class)->prefix('sumber')->group(function(){
+        Route::get('/', 'index')->name('sumber.index');
+        Route::get('/create', 'create')->name('sumber.create');
+        Route::post('/store', 'store')->name('sumber.store');
+        Route::get('/{id}/edit', 'edit')->name('sumber.edit');
+        Route::put('/update', 'update')->name('sumber.update');
+        Route::post('/remove', 'destroy')->name('sumber.delete');
+    });
+
+    Route::controller(BarangController::class)->prefix('barang')->group(function(){
+        Route::get('/', 'index')->name('barang.index');
+        Route::get('/create', 'create')->name('barang.create');
     });
 
 

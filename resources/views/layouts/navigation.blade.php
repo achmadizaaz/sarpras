@@ -24,7 +24,8 @@
           </ul>
         </li>
         <li><a class="nav-link" href="{{ route('kategori.index') }}"><i class="far fa-square"></i> <span>Kategori</span></a></li>           
-        <li><a class="nav-link" href="#"><i class="fas fa-pencil-ruler"></i> <span>Barang</span></a></li>
+        <li><a class="nav-link" href="{{ route('sumber.index') }}"><i class="fas fa-pencil-ruler"></i> <span>Sumber</span></a></li>
+        <li><a class="nav-link" href="{{ route('barang.index') }}"><i class="fas fa-pencil-ruler"></i> <span>Barang</span></a></li>
       </ul>
     </aside>
   </div>
