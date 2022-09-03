@@ -16,7 +16,8 @@ class CreateBangunansTable extends Migration
         Schema::create('bangunans', function (Blueprint $table) {
             $table->id();
             $table->string('kode')->unique();
-            $table->string('nama');
+            $table->string('nama')->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

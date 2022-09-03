@@ -6,7 +6,7 @@
     <section class="section">
         <div class="section-header rounded-2 d-flex justify-content-between">
             <h1>Bangunan</h1>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bangunanModal">Tambah Baru</button>
+            <a class="btn btn-primary" href="{{ route('bangunan.create') }}">Tambah Baru</a>
         </div>
 
         @if (session('success'))
@@ -18,9 +18,6 @@
 
         <div class="section-body">
             <div class="card">
-                <div class="card-header">
-                    <p class="text-primary">List Bangunan</p>
-                </div>
                 <div class="card-body">
                     <table id="bahanTable" class="table table-striped" style="width:100%">
                         <thead>
@@ -38,7 +35,8 @@
                                 <td>{{ $bgn->nama }}</td>
                                 <td>{{ $bgn->created_at }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bangunanModal-{{$bgn->kode}}">
+                                    
+                                    <a href="{{ route('bangunan.edit', $bgn->slug) }}" class="btn btn-warning">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{$bgn->kode}}">

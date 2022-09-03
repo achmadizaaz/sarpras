@@ -39,8 +39,10 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function(){
 
     Route::controller(BangunanController::class)->group(function(){
         Route::get('/bangunan', 'index')->name('bangunan.index');
+        Route::get('/create', 'create')->name('bangunan.create');
         Route::post('/bangunan/store', 'store')->name('bangunan.store');
-        Route::post('/bangunan/update', 'update')->name('bangunan.update');
+        Route::get('/{slug}/edit', 'edit')->name('bangunan.edit');
+        Route::put('/update', 'update')->name('bangunan.update');
         Route::delete('/bangunan/{id}/remove', 'destroy')->name('bangunan.delete');
     });
 

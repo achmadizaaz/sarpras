@@ -78,7 +78,7 @@
             </div>
             <div class="mb-3">
               <label for="bangunan" class="form-label">Bangunan</label>
-              <select class="form-select @error('bangunan_id') is-invalid @enderror" name="bangunan_id" id="bangunan_id" required>
+              <select class="form-select select2 @error('bangunan_id') is-invalid @enderror" name="bangunan_id" id="bangunan_id" required>
                 <option value="">Pilih Bangunan</option>
                 @foreach ($bangunan as $bgn)
                   <option value="{{ $bgn->id }}" @if (old('bangunan_id') == $bgn->id)selected @endif>{{ $bgn->kode }} - {{ $bgn->nama }}</option>
@@ -178,3 +178,11 @@
 
 
 @endsection
+
+@push('scripts')
+    <script>
+      $( '.select' ).select2( {
+          theme: 'bootstrap-5'
+      } );
+    </script>
+@endpush
